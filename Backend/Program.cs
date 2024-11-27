@@ -1,10 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Microsoft.AspNetCore.Mvc;
+using System.Numerics;
 
 List<Order> repo =
 [
     new(1,new(2005,3,12),"холодос","Не морозит","Не морозит совсем","Брелова Кристина","Не назначен"),
 ];
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors();
+var app = builder.Build();
+
+app.UseCors(a => a.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.MapGet("/", () => "Hello World!");
 
