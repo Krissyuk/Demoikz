@@ -1,0 +1,8 @@
+.vscode
+Backend.sln
+Backend/bin
+Backend/obj
+Backend/Properties
+Backend/appsettings.Development.json
+Backend/appsettings.json
+Backend.csproj
