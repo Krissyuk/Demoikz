@@ -11,12 +11,12 @@
     </div>
     <table>
         <tr>
-            <th>Номер заявки</th>
+            <th>Номер</th>
             <th>Дата добавления</th>
-            <th>Оборудование, которое требует ремонта</th>
+            <th>Оборудование</th>
             <th>Тип неисправности</th>
             <th>Описание проблемы</th>
-            <th>Клиент, который подал заявку</th>
+            <th>Клиент</th>
             <th>Статус заявки</th>
         </tr>
         <tr>
@@ -48,7 +48,7 @@
                 status : document.getElementById("status").value
             }
 
-            fetch("https://localhost:7228/create", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(order)});
+            fetch("http://localhost:5077/create", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(order)});
         }
     </script>
 </body>

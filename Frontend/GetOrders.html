@@ -26,10 +26,10 @@
 
         async function GetOrders()
         {
-            let response = await fetch("https://localhost:7228/orders",{method:"GET"});
+            let response = await fetch("http://localhost:5077/orders",{method:"GET"});
             let orders = await response.json();
 
-            orders.forEach(o => {
+            orders.forEach (o => {
                 let tr = document.createElement("tr");
 
                 tr.append(CreateTd(o.number));
@@ -44,13 +44,6 @@
 
                 table.append(tr)
             });
-        }
-
-        function CreateTd(data)
-        {
-            let td = document.createElement("td");
-            td.append(data);
-            return td;
         }
 
     </script>
