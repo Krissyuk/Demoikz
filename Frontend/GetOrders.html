@@ -7,6 +7,7 @@
 <body>
     <a href = "GetOrders.html">Получить заявки</a>
     <a href = "AddOrders.html">Добавить новую заявку</a>
+    <a href = "Statictics.html">Статистика</a>
     <table>
         <tr>
             <th>Номер заявки</th>
@@ -29,12 +30,12 @@
             let response = await fetch("http://localhost:5077/orders",{method:"GET"});
             let orders = await response.json();
 
-            orders.forEach (o => {
+            orders.repo.forEach (o => {
                 let tr = document.createElement("tr");
 
                 tr.append(CreateTd(o.number));
                 tr.append(CreateTd(o.startDate.substring(0,10))); 
-                tr.append(CreateTd(o ? o.endDate.substring(0,10) : "Не назначено")); 
+                tr.append(CreateTd(o.endDate ? o.endDate.substring(0,10) : "Не назначено")); 
                 tr.append(CreateTd(o.device)); 
                 tr.append(CreateTd(o.problemtype)); 
                 tr.append(CreateTd(o.description)); 
@@ -44,6 +45,13 @@
 
                 table.append(tr)
             });
+        }
+
+        function CreateTd(data)
+        {
+            let td = document.createElement("td");
+            td.append(data);
+            return td;
         }
 
     </script>

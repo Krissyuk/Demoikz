@@ -1,55 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Добавление заявки</title>
 </head>
 <body>
-    <div>
         <a href = "GetOrders.html">Получить заявки</a>
         <a href = "AddOrders.html">Добавить новую заявку</a>
-    </div>
-    <table>
-        <tr>
-            <th>Номер</th>
-            <th>Дата добавления</th>
-            <th>Оборудование</th>
-            <th>Тип неисправности</th>
-            <th>Описание проблемы</th>
-            <th>Клиент</th>
-            <th>Статус заявки</th>
-        </tr>
-        <tr>
-            <td><input id = "number" placeholder="Номер"/></td>
-            <td><input id = "startDate" type="date"/></td>
-            <td><input id = "device" placeholder="Оборудование"/></td>
-            <td><input id = "problemType" placeholder="Тип неисправности"/></td>
-            <td><input id = "description" placeholder="Описание проблемы"/></td>
-            <td><input id = "client" placeholder="Клиент"/></td>
-            <td>
-                <select id = "status">
-                <option>в ожидании</option>
-                <option>в работе</option>
-                <option>выполнено</option>
-                </select>
-            </td>
-            <td><input id="save" value="Сохранить" type="button"/></td>
-        </tr>
-    </table>
-    <script>
-        document.getElementById("save").onclick = async() => {
-            let order = {
-                number : document.getElementById("number").value,
-                startDate : document.getElementById("startDate").value,
-                device : document.getElementById("device").value,
-                problemType : document.getElementById("problemType").value,
-                description : document.getElementById("description").value,
-                client : document.getElementById("client").value,
-                status : document.getElementById("status").value
-            }
+        <a href = "Statictics.html">Статистика</a>
+        <iframe name ="frame" style="display: none;"></iframe>
+        <form target="frame" action="http://localhost:5077/create" method="get">
 
-            fetch("http://localhost:5077/create", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(order)});
-        }
-    </script>
+        <input required placeholder = "Номер" type="number" name="number"/><br/>
+        <label for = "startDate">Дата начала</label><br/>
+        <input required type="date" name="startDate"/><br/>
+        <input required placeholder = "Оборудование" type="text" name="device"/><br/>
+        <input required placeholder = "Тип проблемы" type="text" name="problemType"/><br/>
+        <input required placeholder = "Описание" type="text" name="description"/><br/>
+        <input required placeholder = "Клиент" type="text" name="client"/><br/>
+        <label for = "status">Статус</label><br/>
+        <select name = "status">
+            <option>в ожидании</option>
+            <option>в работе</option>
+            <option>выполнено</option>
+        </select><br/>
+        <input type="submit" value="Создание"/>
+        </form>
 </body>
 </html>
